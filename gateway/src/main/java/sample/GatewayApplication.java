@@ -39,6 +39,7 @@ public class GatewayApplication {
 
 	@Bean
 	public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
+		//定义网关的路由转发信息
 		//@formatter:off
 		return builder.routes()
 				.route("resource", r -> r.path("/resource")
@@ -48,6 +49,14 @@ public class GatewayApplication {
 		//@formatter:on
 	}
 
+	/**
+	 * 显示用户信息？
+	 *
+	 * @param model
+	 * @param authorizedClient
+	 * @param oauth2User
+	 * @return
+	 */
 	@GetMapping("/")
 	public String index(Model model,
 						@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient authorizedClient,

@@ -16,10 +16,12 @@ spring:
     exclude: org.springframework.boot.actuate.autoconfigure.security.reactive.ReactiveManagementWebSecurityAutoConfiguration
   thymeleaf:
     cache: false
+
   security:
     oauth2:
       client:
         registration:
+          #定义一个login-client, 用于对账号进行验证
           login-client:
             provider: uaa
             client-id: login-client
@@ -28,6 +30,7 @@ spring:
             redirect-uri-template: "{baseUrl}/login/oauth2/code/{registrationId}"
             scope: openid,profile,email,resource.read
         provider:
+          #oauth provider,可以有多个提供者，指定各个client所需要的参数信息
           uaa:
             authorization-uri: http://localhost:8090/uaa/oauth/authorize
             token-uri: http://localhost:8090/uaa/oauth/token

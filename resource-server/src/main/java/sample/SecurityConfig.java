@@ -23,6 +23,12 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @EnableWebFluxSecurity
 public class SecurityConfig {
 
+	/**
+	 * 设置验证策略，指定哪些需要验证，哪些可以匿名访问
+	 * @param http
+	 * @return
+	 * @throws Exception
+	 */
 	@Bean
 	SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) throws Exception {
 		http
